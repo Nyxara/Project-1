@@ -38,6 +38,7 @@ const addUser = (request, response, body) => {
   const responseJSON = {
     message: 'Name and age are both required',
   };
+
   if (!body.name || !body.age) {
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
