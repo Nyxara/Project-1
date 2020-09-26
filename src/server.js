@@ -42,16 +42,6 @@ const urlStruct = {
   },
 };
 
-/* const handleGet = (request, response, parsedUrl) => {
-  if (parsedUrl.pathname === '/style.css') {
-    htmlHandler.getCSS(request, response);
-  } else if (parsedUrl.pathname === '/getUsers') {
-    jsonHandler.getUsers(request, response);
-  } else {
-    htmlHandler.getIndex(request, response);
-  }
-}; */
-
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
 
@@ -68,10 +58,6 @@ const onRequest = (request, response) => {
   } else {
     urlStruct[request.method].notFound(request, response);
   }
-
-  /* else {
-       handleGet(request, response, parsedUrl);
-     } */
 };
 
 http.createServer(onRequest).listen(port);
