@@ -39,7 +39,7 @@ const addUser = (request, response, body) => {
     message: 'Name and age are both required',
   };
 
-  if (!body.name || !body.age) {
+  if (!body.name || !body.level) {
     responseJSON.id = 'missingParams';
     return respondJSON(request, response, 400, responseJSON);
   }
@@ -53,7 +53,11 @@ const addUser = (request, response, body) => {
     users[body.name].name = body.name;
   }
 
-  users[body.name].age = body.age;
+  users[body.name].level = body.level;
+    users[body.name].class = body.class;
+    users[body.name].race = body.race;
+    users[body.name].campaign = body.campaign;
+    users[body.name].ref = body.ref;
 
   if (responseCode === 201) {
     responseJSON.message = 'Created Successfully!';
