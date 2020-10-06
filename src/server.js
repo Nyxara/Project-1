@@ -44,7 +44,7 @@ const urlStruct = {
 
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
-    
+
   const params = query.parse(parsedUrl.query);
 
   console.dir(parsedUrl.pathname);

@@ -28,22 +28,21 @@ const getUsers = (request, response, params) => {
   const responseJSON = {
     users,
   };
-    
-    if(!params.name) {
-        return respondJSON(request, response, 200, responseJSON);
-    } else if (params.name) {
-        let yes = users[params.name];
-        if(yes) {
-            return respondJSON(request, response,200,{user:yes})
-        } else {
-            responseJSON.message = 'No user with this name';
+
+  if (!params.name) {
+    return respondJSON(request, response, 200, responseJSON);
+  } if (params.name) {
+    const yes = users[params.name];
+    if (yes) {
+      return respondJSON(request, response, 200, { user: yes });
+    }
+    responseJSON.message = 'No user with this name';
     // give the error a consistent id
     responseJSON.id = 'notFound';
-            return respondJSON(request, response,404,responseJSON)
-        }
-    }
+    return respondJSON(request, response, 404, responseJSON);
+  }
 
-  
+  return responseJSON(request, response, 200, responseJSON, 'application/json');
 };
 
 const getUsersMeta = (request, response) => respondJSONMeta(request, response, 200);
@@ -68,10 +67,10 @@ const addUser = (request, response, body) => {
   }
 
   users[body.name].level = body.level;
-    users[body.name].class = body.class;
-    users[body.name].race = body.race;
-    users[body.name].campaign = body.campaign;
-    users[body.name].ref = body.ref;
+  users[body.name].class = body.class;
+  users[body.name].race = body.race;
+  users[body.name].campaign = body.campaign;
+  users[body.name].ref = body.ref;
 
   if (responseCode === 201) {
     responseJSON.message = 'Created Successfully!';
