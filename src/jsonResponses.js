@@ -22,14 +22,28 @@ const respondJSONMeta = (request, response, status) => {
   response.end();
 };
 
-const getUsers = (request, response) => {
+const getUsers = (request, response, params) => {
 // create a parent object to hold the users object
   // we could add a message, status code,...etc to this parent object
   const responseJSON = {
     users,
   };
+    
+    if(!params.name) {
+        return respondJSON(request, response, 200, responseJSON);
+    } else if (params.name) {
+        let yes = users[params.name];
+        if(yes) {
+            return respondJSON(request, response,200,{user:yes})
+        } else {
+            responseJSON.message = 'No user with this name';
+    // give the error a consistent id
+    responseJSON.id = 'notFound';
+            return respondJSON(request, response,404,responseJSON)
+        }
+    }
 
-  return respondJSON(request, response, 200, responseJSON);
+  
 };
 
 const getUsersMeta = (request, response) => respondJSONMeta(request, response, 200);
