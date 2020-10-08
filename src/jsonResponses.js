@@ -41,6 +41,19 @@ const getUsers = (request, response, params) => {
     responseJSON.id = 'notFound';
     return respondJSON(request, response, 404, responseJSON);
   }
+    
+     if (!params.creator) {
+    return respondJSON(request, response, 200, responseJSON);
+  } if (params.creator) {
+    const yes = users[params.creator];
+    if (yes) {
+      return respondJSON(request, response, 200, { user: yes });
+    }
+    responseJSON.message = 'No creators with this name';
+    // give the error a consistent id
+    responseJSON.id = 'notFound';
+    return respondJSON(request, response, 404, responseJSON);
+  }
 
   return responseJSON(request, response, 200, responseJSON, 'application/json');
 };
@@ -71,6 +84,7 @@ const addUser = (request, response, body) => {
   users[body.name].race = body.race;
   users[body.name].campaign = body.campaign;
   users[body.name].ref = body.ref;
+  users[body.name].creator = body.creator;
 
   if (responseCode === 201) {
     responseJSON.message = 'Created Successfully!';

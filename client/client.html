@@ -50,6 +50,7 @@
 <h3>Level ${user.level}</h3>
 <p>${user.class}</p>
 <p>${user.race}</p>
+<p>Creator ~ ${user.creator}</p>
 <a href="${user.ref}">${user.ref}</a>
         </div>`
                 }
@@ -74,6 +75,7 @@
             const raceField = nameForm.querySelector('#raceField');
             const campaignField = nameForm.querySelector('#campaignField');
             const refField = nameForm.querySelector('#refField');
+            const creatorField = nameForm.querySelector('#creatorField');
 
             const xhr = new XMLHttpRequest();
             xhr.open(nameMethod, nameAction);
@@ -84,7 +86,7 @@
 
             xhr.onload = () => handleResponse(xhr);
 
-            const formData = `name=${nameField.value}&level=${ageField.value}&class=${classField.value}&race=${raceField.value}&campaign=${campaignField.value}&ref=${refField.value}`;
+            const formData = `name=${nameField.value}&level=${ageField.value}&class=${classField.value}&race=${raceField.value}&campaign=${campaignField.value}&ref=${refField.value}&creator=${creatorField.value}`;
             xhr.send(formData);
 
             return false; //to prevent bubbling
@@ -136,6 +138,8 @@
     <section id="top">
         <h3>POST Status Code Tests</h3>
         <form id="nameForm" action="/addUser" method="post">
+            <label for="creator">Creator: </label>
+            <input id="creatorField" type="text" name="creator" />
             <label for="name">Name: </label>
             <input id="nameField" type="text" name="name" />
             <label for="level">Level: </label>
