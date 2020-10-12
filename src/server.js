@@ -32,6 +32,7 @@ const urlStruct = {
   GET: {
     '/': htmlHandler.getIndex,
     '/style.css': htmlHandler.getCSS,
+    '/bg2.jpg': htmlHandler.getImg,
     '/getUsers': jsonHandler.getUsers,
     '/addUser': handlePost.addUser,
     notFound: jsonHandler.notFound,

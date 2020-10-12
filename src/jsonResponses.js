@@ -29,25 +29,25 @@ const getUsers = (request, response, params) => {
     users,
   };
 
-  if (!params.name) {
+  /*if (!params.name) {
     return respondJSON(request, response, 200, responseJSON);
   } if (params.name) {
     const yes = users[params.name];
     if (yes) {
       return respondJSON(request, response, 200, { user: yes });
     }
-    responseJSON.message = 'No user with this name';
+    responseJSON.message = 'No character with this name';
     // give the error a consistent id
     responseJSON.id = 'notFound';
     return respondJSON(request, response, 404, responseJSON);
-  }
-    
-     if (!params.creator) {
+  }*/
+
+  if (!params.creator) {
     return respondJSON(request, response, 200, responseJSON);
   } if (params.creator) {
-    const yes = users[params.creator];
-    if (yes) {
-      return respondJSON(request, response, 200, { user: yes });
+    const yese = users[params.creator];
+    if (yese) {
+      return respondJSON(request, response, 200, { user: yese });
     }
     responseJSON.message = 'No creators with this name';
     // give the error a consistent id
