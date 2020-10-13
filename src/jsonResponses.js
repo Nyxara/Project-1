@@ -1,5 +1,25 @@
 // Note this object is purely in memory
-const users = {};
+const users = {
+    Zhaxi: {
+        name: 'Zhaxi',
+        level: '7',
+        class: 'Sorcerer',
+        race: 'Kitsune',
+        campaign: 'Stormalong',
+        ref: 'https://drive.google.com/file/d/1fO8BLl5saXls0sJXMQCKzskNFNa4Ojgs/view?usp=sharing',
+        creator: 'Nyxara',
+    },
+    
+    Azire: {
+        name: 'Azire',
+        level: '88',
+        class: 'Rogue/Assassin',
+        race: 'Tiefling',
+        campaign: 'Stormalong',
+        ref: 'https://docs.google.com/document/d/1Yz-M7V6JehmWOhDwXk4TjZj0riSgsrm2BCGokZrgcIk/edit?usp=sharing',
+        creator: 'Evon',
+    },
+};
 
 const respondJSON = (request, response, status, object) => {
   const headers = {
@@ -29,7 +49,7 @@ const getUsers = (request, response, params) => {
     users,
   };
 
-  /*if (!params.name) {
+  if (!params.name) {
     return respondJSON(request, response, 200, responseJSON);
   } if (params.name) {
     const yes = users[params.name];
@@ -40,9 +60,9 @@ const getUsers = (request, response, params) => {
     // give the error a consistent id
     responseJSON.id = 'notFound';
     return respondJSON(request, response, 404, responseJSON);
-  }*/
+  }
 
-  if (!params.creator) {
+ /* if (!params.creator) {
     return respondJSON(request, response, 200, responseJSON);
   } if (params.creator) {
     const yese = users[params.creator];
@@ -53,7 +73,7 @@ const getUsers = (request, response, params) => {
     // give the error a consistent id
     responseJSON.id = 'notFound';
     return respondJSON(request, response, 404, responseJSON);
-  }
+  }*/
 
   return responseJSON(request, response, 200, responseJSON, 'application/json');
 };
